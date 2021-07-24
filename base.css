@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+body{
+    font-family: Meiryo, "メイリオ";
+    background-color: lightyellow;
+}
+
+h1{
+    text-align: center;
+
+    background-color: lightpink;
+}
+
+div{
+    text-align: center;
+}
+
+div > label {display:inline-block; width: 500px; height: 40px;}
+
+div > p {
+    height: 30px;
+}
+
+#finalmessage {
+    background-color: lightpink;
+}

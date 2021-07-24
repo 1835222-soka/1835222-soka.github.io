@@ -1,37 +1,168 @@
 <!DOCTYPE html>
 
 <html lang="ja">
-
     <head>
         <meta charset="UTF-8">
-        <title>グラフを描画してみる</title>
+        <link rel="stylesheet" href="base.css">
+        <title>最終課題～漢字テスト～</title>
     </head>
 
     <body>
         <header>
-            <h1>グラフを描画する</h1>
+            <h1>漢字テスト　君も漢字マスターだ！</h1>
         </header>
 
         <div>
-            <h2>折れ線グラフ</h2>
-            <canvas id="lineChart"></canvas>
+            <h2>漢字の読み問題</h2>
+            <h4>熟語の読み問題を５問出します。解答欄に読み仮名をひらがなで書いてください。目指せ全問正解！</h4>
         </div>
 
         <div>
-            <h2>円グラフ</h2>
-            <canvas id="PieChart"></canvas>
+            <form name="q_1">
+                <label id="q_1text">
+                    第一問：曇天
+                    <input type="text" name="question1" id="question1">
+                    <input type="button" value="回答" onclick="q1()" >
+                </label>
+
+                <div id="question1-result">
+                    <p id="question1-result-p"></p>
+                </div>
+            </form>            
         </div>
 
-        <!-- 外部のJavascriptファイルを読み込む -->
-        <!-- 読み込む順番が重要 -->
-        <!-- JQuery -->
+        <div>
+            <form name="q_2">
+                <label>
+                    第二問：泡沫
+                    <input type="text" name="question2" id="question2">
+                    <input type="button" value="回答" onclick="q2()" >
+                </label>
+
+                <div id="question2-result">
+                    <p id="question2-result-p"></p>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <form name="q_3">
+                <label>
+                    第三問：天邪鬼
+                    <input type="text" name="question3" id="question3">
+                    <input type="button" value="回答" onclick="q3()" >
+                </label>
+
+                <div id="question3-result">
+                    <p id="question3-result-p"></p>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <form name="q_4">
+                <label>
+                    第四問：有効
+                    <input type="text" name="question4" id="question4">
+                    <input type="button" value="回答" onclick="q4()" >
+                </label>
+
+                <div id="question4-result">
+                    <p id="question4-result-p"></p>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <form name="q_5">
+                <label>
+                    第五問：檸檬
+                    <input type="text" name="question5" id="question5">
+                    <input type="button" value="回答" onclick="q5()" >
+                </label>
+
+                <div id="question5-result">
+                    <p id="question5-result-p"></p>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <h2>漢字の書き問題</h2>
+            <h4>熟語の書き問題を５問出します。正しいと思う漢字を選択してクリックしてください。目指せ全問正解！</h4>
+        </div>
+
+        <div>
+            <p>第六問：あなたの意見は<u>せいれんけっぱく</u>である</p>
+            <button type="button" onclick="question6(0)">精連決伯</button>
+            <button type="button" onclick="question6(1)">清廉潔白</button>
+            <button type="button" onclick="question6(2)">制簾傑舶</button>
+
+            <div id="question6-result">
+                <p id="question6-result-p"></p>
+            </div>
+        </div>
+
+        <div>
+            <p>第七問：<u>めいし</u>を渡す</p>
+            <button type="button" onclick="question7(0)">名刺</button>
+            <button type="button" onclick="question7(1)">銘氏</button>
+            <button type="button" onclick="question7(2)">名紙</button>
+
+            <div id="question7-result">
+                <p id="question7-result-p"></p>
+            </div>     
+        </div>
+
+        <div>
+            <p>第八問：<u>げんじつ</u>は厳しい</p>
+            <button type="button" onclick="question8(0)">限日</button>
+            <button type="button" onclick="question8(1)">幻日</button>
+            <button type="button" onclick="question8(2)">現実</button>
+
+            <div id="question8-result">
+                <p id="question8-result-p"></p>
+            </div>
+        </div>
+
+        <div>
+            <p>第九問：<u>おんこちしん</u></p>
+            <button type="button" onclick="question9(0)">温故知新</button>
+            <button type="button" onclick="question9(1)">音虚智信</button>
+            <button type="button" onclick="question9(2)">恩故智新</button>
+
+            <div id="question9-result">
+                <p id="question9-result-p"></p>
+            </div>
+        </div>
+
+        <div>
+            <p>第十問：<u>せいそ</u>な服装を心掛ける</p>
+            <button type="button" onclick="question10(0)">精粗</button>
+            <button type="button" onclick="question10(1)">清楚</button>
+            <button type="button" onclick="question10(2)">正礎</button>
+
+            <div id="question10-result">
+                <p id="question10-result-p"></p>
+            </div>
+        </div>
+
+        <div>
+            <h2 id="finalmessage">お疲れ様でした！</h2>
+            <p>漢字はとても奥が深く、１回調べ始めるとなかなかに面白い漢字が多くあります。是非、日々使う言葉について目を向けて意味を調べてみてはいかがでしょうか♪    </p>
+        </div>
+
+
+
+
+
+        <!-- Jquery -->
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-        <!-- Chart.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.js"></script>
+        <!-- 最終課題js -->
+        <script src="finalassignment.js"></script>
 
-        <!-- Chartを使ってみる -->
-        <script src="js/test-chart.js"></script>
 
     </body>
+
 </html>
